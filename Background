@@ -1,0 +1,35 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Background : MonoBehaviour
+{
+    // public variable for Speed
+    public float bgSpeed;
+    float bgPositionX;
+    float bg1PositionX;
+
+
+    // Start is called before the first frame update
+    void Start()
+    {
+
+        bgPositionX = transform.position.x;
+        // Use GameObject reference position for second background
+        bg1PositionX = GameObject.Find("background_1").transform.position.x;
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        // Moving object 
+        transform.position = new Vector3(transform.position.x + bgSpeed, transform.position.y, transform.position.z);
+        // Moving background then reappearing again 
+        if (transform.position.x < (bg1PositionX * -1f))
+        {
+            // setting a new position of a background
+            transform.position = new Vector3(bg1PositionX, transform.position.y, transform.position.z);
+        }
+    }
+}
