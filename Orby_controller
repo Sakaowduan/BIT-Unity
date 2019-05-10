@@ -1,0 +1,29 @@
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class Orby_controller : MonoBehaviour
+{
+    // Variables to controling character jumping
+    public float jumpSpeed;
+    Rigidbody2D rb;
+    // Start is called before the first frame update
+    void Start()
+    {
+        // Component control of an object's position through physics simulation.
+        rb = GetComponent<Rigidbody2D>();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        // User press space bar will increase velocity
+        // 'GetButtonDown' return true while the virtual button identified by buttonName is held down.
+        // 'Jump' argument return true during the frame the user pressed down the virtual button identified by buttonName.
+        if (Input.GetButtonDown("Jump")) {
+
+            // Linear velocity of the rigidbody.
+            rb.velocity = new Vector2(rb.velocity.x, jumpSpeed);
+        }
+    }
+}
